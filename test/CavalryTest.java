@@ -6,7 +6,7 @@ import ageofempires.units.Cavalry;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class CavalryTest extends AttackTest {
+public class CavalryTest extends AttackTest implements IEntityTest {
 
     private Cavalry attackerCavalry;
     private Cavalry attackerCavalryNoAP;

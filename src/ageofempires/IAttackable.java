@@ -16,19 +16,51 @@ public interface IAttackable {
     void setAttackPoints(float hp);
 
     /**
-     * True if entity is alive (positive hit points), False if it is not
-     * @return
+     * True if entity is alive (positive hit points), False if is not
+     * @return boolean
      */
     boolean isAlive();
 
     /**
-     * @param archerUnit
+     * An attack received from an archer unit. Removes an amount of points
+     * of the entity depending of both entity type and archer unit attack points
+     * @param archerUnit attacker archer unit
      */
     void attackedByArcher(Archer archerUnit);
+
+
+    /**
+     * @param cavalryUnit attacker cavalry unit
+     */
     void attackedByCavalry(Cavalry cavalryUnit);
+
+    /**
+     *
+     * @param infantryUnit attacker infantry unit
+     */
     void attackedByInfantry(Infantry infantryUnit);
+
+    /**
+     *
+     * @param monkUnit attacker monk unit
+     */
     void curedByMonk(Monk monkUnit);
+
+    /**
+     *
+     * @param siegeUnit attacker siege unit
+     */
     void attackedBySiege(Siege siegeUnit);
+
+    /**
+     *
+     * @param villagerUnit attacker villager unit
+     */
     void handledByVillager(Villager villagerUnit);
+
+    /**
+     *
+     * @param castleBuilding attacker castle building
+     */
     void attackedByCastle(Castle castleBuilding);
 }

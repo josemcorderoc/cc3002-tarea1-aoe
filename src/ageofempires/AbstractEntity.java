@@ -41,8 +41,7 @@ public abstract class AbstractEntity implements IAttackable {
     }
 
     /**
-     * An attack received from an archer unit. Removes an amount of points
-     * of the entity depending of both entity type and archer unit attack points
+     * {@inheritDoc}
      * @param archerUnit attacker archer unit
      */
     public void attackedByArcher(Archer archerUnit){
@@ -61,9 +60,7 @@ public abstract class AbstractEntity implements IAttackable {
     }
 
 
-    /**
-     * @param infantryUnit
-     */
+
     public void attackedByInfantry(Infantry infantryUnit){
         if (!isAlive()) { return; }
         currentHP -= interactionWithMe.get("Infantry")*infantryUnit.getAttackPoints();
@@ -107,6 +104,15 @@ public abstract class AbstractEntity implements IAttackable {
 
     @Override
     public boolean isAlive() { return currentHP > 0; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this.getClass() == o.getClass()) {
+            return this.currentHP == ((AbstractEntity)o).currentHP &&
+                   this.attackPoints == ((AbstractEntity)o).attackPoints;
+        }
+        return false;
+    }
 
 
 

@@ -5,7 +5,7 @@ import ageofempires.units.Archer;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class ArcherTest extends AttackTest{
+public class ArcherTest extends AttackTest implements IEntityTest {
 
     private Archer attackerArcher;
     private Archer attackerArcherNoAP;
@@ -31,10 +31,13 @@ public class ArcherTest extends AttackTest{
 
     @Test
     public void testEquals(){
+        assertTrue(attackerArcher.equals(new Archer(500, 200)));
+        assertFalse(attackerArcher.equals(attackerArcherNoAP));
+        assertFalse(attackerArcher.equals(victimMonk1));
     }
 
     @Test
-    public void testReceivedAttacks(){
+    public void testAttack(){
     }
 
     @Test

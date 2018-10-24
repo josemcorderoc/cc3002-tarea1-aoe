@@ -1,10 +1,8 @@
 package test;
 
-import ageofempires.units.Monk;
-
 import org.junit.Before;
 
-public class MonkTest extends AttackTest {
+public class MonkTest extends AttackTest implements IEntityTest {
 
     @Before
     public void setUp(){

@@ -7,7 +7,7 @@ package ageofempires;
 public interface IAttacker extends IAttackable {
 
     /**
-     * Depending of the attacker entity , this method modifies (or not) the victim entity
+     * Depending of the attacker entity, this method modifies (or not) the victim entity
      * @param victim entity to modify
      */
     void interactWith(IAttackable victim);

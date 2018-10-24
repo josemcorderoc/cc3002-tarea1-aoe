@@ -5,11 +5,11 @@ import ageofempires.units.AbstractUnit;
 
 public class AbstractBuilding extends AbstractEntity {
 
-    protected AbstractBuilding(float hp) {
+    AbstractBuilding(float hp) {
         super(hp);
     }
 
-    protected AbstractBuilding(float hp, float ap){
+    AbstractBuilding(float hp, float ap){
         super(hp, ap);
     }
 
