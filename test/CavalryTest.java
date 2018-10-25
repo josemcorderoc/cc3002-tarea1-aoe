@@ -6,7 +6,7 @@ import ageofempires.units.Cavalry;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class CavalryTest extends AttackTest implements IEntityTest {
+public class CavalryTest extends AbstractAttackerTest {
 
     private Cavalry attackerCavalry;
     private Cavalry attackerCavalryNoAP;
@@ -19,28 +19,70 @@ public class CavalryTest extends AttackTest implements IEntityTest {
         attackerCavalry = new Cavalry(100,200);
         attackerCavalryNoAP = new Cavalry(100,0);
         attackerCavalryDead = new Cavalry(0,100);
-
-        // interactions
-        for (AbstractEntity entity1 : entitiesList1) {
-            attackerCavalry.interactWith(entity1);
         }
 
-        for (AbstractEntity entity2 : entitiesList1) {
-            attackerCavalryNoAP.interactWith(entity2);
-        }
+    /**
+     * Test how does this entity interact with archer units
+     */
+    @Override
+    void testInteractWithArcher() {
 
-        for (AbstractEntity entity3 : entitiesList1) {
-            attackerCavalryDead.interactWith(entity3);
-        }
     }
 
-    @Test
-    public void killingTest(){
+    /**
+     * Test how does this entity interact with cavalry units
+     */
+    @Override
+    void testInteractWithCavalry() {
 
-        // killed
-        assertFalse(entitiesList1[0].isAlive());
+    }
 
-        // not killed
+    /**
+     * Test how does this entity interact with infantry units
+     */
+    @Override
+    void testInteractWithInfantry() {
+
+    }
+
+    /**
+     * Test how does this entity interact with monk units
+     */
+    @Override
+    void testInteractWithMonk() {
+
+    }
+
+    /**
+     * Test how does this entity interact with siege units
+     */
+    @Override
+    void testInteractWithSiege() {
+
+    }
+
+    /**
+     * Test how does this entity interact with villager units
+     */
+    @Override
+    void testInteractWithVillager() {
+
+    }
+
+    /**
+     * Test how does this entity interact with barracks buildings
+     */
+    @Override
+    void testInteractWithBarracks() {
+
+    }
+
+    /**
+     * Test how does this entity interact with castle buildings
+     */
+    @Override
+    void testInteractWithCastle() {
+
     }
 }
 

@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Implement the properties and behavior of all attackable entitys of the game
+ * Implements properties and behavior of all attackable entitys of the game
  * @author Jose Miguel Cordero
  */
 public abstract class AbstractEntity implements IAttackable {
@@ -50,8 +50,7 @@ public abstract class AbstractEntity implements IAttackable {
     }
 
     /**
-     * An attack received from a cavalry unit. Removes an amount of points
-     * of the entity depending of both entity type and cavalry unit attack points
+     * {@inheritDoc}
      * @param cavalryUnit attacker cavalry unit
      */
     public void attackedByCavalry(Cavalry cavalryUnit){

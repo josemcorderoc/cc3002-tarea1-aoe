@@ -30,12 +30,15 @@ public interface IAttackable {
 
 
     /**
+     * An attack received from a cavalry unit. Removes an amount of points
+     * of the entity depending of both entity type and cavalry unit attack points
      * @param cavalryUnit attacker cavalry unit
      */
     void attackedByCavalry(Cavalry cavalryUnit);
 
     /**
-     *
+     * An attack received from an infantry unit. Removes an amount of points
+     * of the entity depending of both entity type and infantry unit attack points
      * @param infantryUnit attacker infantry unit
      */
     void attackedByInfantry(Infantry infantryUnit);
@@ -47,19 +50,22 @@ public interface IAttackable {
     void curedByMonk(Monk monkUnit);
 
     /**
-     *
+     * An attack received from a siege unit. Removes an amount of points
+     * of the entity depending of both entity type and siege unit attack points
      * @param siegeUnit attacker siege unit
      */
     void attackedBySiege(Siege siegeUnit);
 
     /**
-     *
-     * @param villagerUnit attacker villager unit
+     * An interaction between this entity and a villager unit. Removes or adds an amount of points
+     * of the entity depending of both entity type and villager unit unit attack points
+     * @param villagerUnit interacting villager unit
      */
     void handledByVillager(Villager villagerUnit);
 
     /**
-     *
+     * An attack received from a castle building. Removes an amount of points
+     * of the entity depending of both entity type and castle attack points
      * @param castleBuilding attacker castle building
      */
     void attackedByCastle(Castle castleBuilding);
