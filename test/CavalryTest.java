@@ -6,6 +6,11 @@ import ageofempires.units.Cavalry;
 import org.junit.*;
 import static org.junit.Assert.*;
 
+/**
+ * Test the Cavalry class associated methods
+ *
+ * @author Jose Miguel Cordero
+ */
 public class CavalryTest extends AbstractAttackerTest {
 
     private Cavalry attackerCavalry;

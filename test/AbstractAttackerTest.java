@@ -4,9 +4,20 @@ import ageofempires.AbstractEntity;
 import ageofempires.buildings.*;
 import ageofempires.units.*;
 
+/**
+ * Test the implementations of IAttacker interface (creates victim entities of all attackable classes for testing)
+ */
 public abstract class AbstractAttackerTest extends AbstractAttackableTest {
 
     Archer victimArcherToCompare;
+    Infantry victimInfantryToCompare;
+    Cavalry victimCavalryToCompare;
+    Monk victimMonkToCompare;
+    Siege victimSiegeToCompare;
+    Villager victimVillagerToCompare;
+    Castle victimCastleToCompare;
+    Barracks victimBarracksToCompare;
+
 
     Archer victimArcher1;
     Archer victimArcher2;
@@ -14,15 +25,11 @@ public abstract class AbstractAttackerTest extends AbstractAttackableTest {
     Archer victimArcherNoAP;
     Archer victimArcherDead;
 
-    Infantry victimInfantryToCompare;
-
     Infantry victimInfantry1;
     Infantry victimInfantry2;
     Infantry victimInfantry3;
     Infantry victimInfantryNoAP;
     Infantry victimInfantryDead;
-
-    Cavalry victimCavalryToCompare;
 
     Cavalry victimCavalry1;
     Cavalry victimCavalry2;
@@ -30,15 +37,11 @@ public abstract class AbstractAttackerTest extends AbstractAttackableTest {
     Cavalry victimCavalryNoAP;
     Cavalry victimCavalryDead;
 
-    Monk victimMonkToCompare;
-
     Monk victimMonk1;
     Monk victimMonk2;
     Monk victimMonk3;
     Monk victimMonkNoAP;
     Monk victimMonkDead;
-
-    Siege victimSiegeToCompare;
 
     Siege victimSiege1;
     Siege victimSiege2;
@@ -46,15 +49,11 @@ public abstract class AbstractAttackerTest extends AbstractAttackableTest {
     Siege victimSiegeNoAP;
     Siege victimSiegeDead;
 
-    Villager victimVillagerToCompare;
-
     Villager victimVillager1;
     Villager victimVillager2;
     Villager victimVillager3;
     Villager victimVillagerNoAP;
     Villager victimVillagerDead;
-
-    Castle victimCastleToCompare;
 
     Castle victimCastle1;
     Castle victimCastle2;
@@ -62,14 +61,11 @@ public abstract class AbstractAttackerTest extends AbstractAttackableTest {
     Castle victimCastleNoAP;
     Castle victimCastleDead;
 
-    Barracks victimBarracksToCompare;
-
     Barracks victimBarracks1;
     Barracks victimBarracks2;
     Barracks victimBarracks3;
     Barracks victimBarracksNoAP;
     Barracks victimBarracksDead;
-
 
     Archer[] victimArcherList = new Archer[5];
     Cavalry[] victimCavalryList = new Cavalry[5];
@@ -85,6 +81,9 @@ public abstract class AbstractAttackerTest extends AbstractAttackableTest {
 
 
     @Override
+    /**
+     * Initialize victim entities and arrays
+     */
     void setUp() {
         super.setUp();
         
@@ -213,14 +212,53 @@ public abstract class AbstractAttackerTest extends AbstractAttackableTest {
         entityListToCompare[7] = victimCastleToCompare;
     }
 
+    /**
+     * Test the interactWithArcher method in 3 cases: normal archer, dead archer and no attack points archer
+     */
     public abstract void testInteractWithArcher();
+
+    /**
+     * Test the interactWithCavalry method in 3 cases: normal cavalry, dead cavalry and no attack points cavalry
+     */
     public abstract void testInteractWithCavalry();
+
+    /**
+     * Test the interactWithInfantry method in 3 cases: normal infantry, dead infantry and no attack points infantry
+     */
     public abstract void testInteractWithInfantry();
+
+    /**
+     * Test the interactWithMonk method in 3 cases: normal monk, dead monk and no attack points monk
+     */
     public abstract void testInteractWithMonk();
+
+    /**
+     * Test the interactWithSiege method in 3 cases: normal siege, dead siege and no attack points siege
+     */
     public abstract void testInteractWithSiege();
+
+    /**
+     * Test the interactWithVillager method in 3 cases: normal villager, dead villager and no attack points villager
+     */
     public abstract void testInteractWithVillager();
+
+    /**
+     * Test the interactWithBarracks method in 2 cases: normal barracks and dead barracks
+     */
     public abstract void testInteractWithBarracks();
+
+    /**
+     * Test the interactWithCastle method in 3 cases: normal castle, dead castle and no attack points castle
+     */
     public abstract void testInteractWithCastle();
+
+    /**
+     * Test the interaction methods with a no attack points entity
+     */
     public abstract void testNoAPInteraction();
+
+    /**
+     * Test the interaction methods with a dead entity
+     */
     public abstract void testDeadInteraction();
 }
