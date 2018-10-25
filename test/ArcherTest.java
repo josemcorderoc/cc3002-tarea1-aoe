@@ -1,8 +1,7 @@
 package test;
 
-import ageofempires.units.Archer;
-
-import ageofempires.units.Cavalry;
+import ageofempires.buildings.Barracks;
+import ageofempires.units.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -14,6 +13,7 @@ import static org.junit.Assert.*;
 public class ArcherTest extends AbstractAttackerTest {
 
     private Archer archer;
+    private Archer archer2;
     private Archer archerNoAP;
     private Archer archerDead;
 
@@ -24,6 +24,7 @@ public class ArcherTest extends AbstractAttackerTest {
     public void setUp(){
         super.setUp();
         archer = new Archer(100,100);
+        archer2 = new Archer(200,100);
         archerNoAP = new Archer(200,0);
         archerDead = new Archer(0,100);
     }
@@ -111,6 +112,11 @@ public class ArcherTest extends AbstractAttackerTest {
         assertEquals(66,archer.getAttackPoints(), 0.0);
     }
 
+    //aaaaaaaaaaaaaaaaaaa
+
+    /**
+     * {@inheritDoc}
+     */
     @Test @Override
     public void testAttackedByArcher() {
         archer.attackedByArcher(attackerArcherNoAP);
@@ -118,87 +124,233 @@ public class ArcherTest extends AbstractAttackerTest {
         archer.attackedByArcher(attackerArcherDead);
         assertEquals(100, archer.getCurrentHP(), epsilon);
         archer.attackedByArcher(attackerArcher);
-
+        assertEquals(0, archer.getCurrentHP(), epsilon);
+        archer2.attackedByArcher(attackerArcher);
+        assertEquals(80, archer.getCurrentHP(), epsilon);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Test @Override
     public void testAttackedByCavalry() {
+        archer.attackedByCavalry(attackerCavalryNoAP);
+        assertEquals(100, archer.getCurrentHP(), epsilon);
+        archer.attackedByCavalry(attackerCavalryDead);
+        assertEquals(100, archer.getCurrentHP(), epsilon);
+        archer.attackedByCavalry(attackerCavalry);
+        assertEquals(0, archer.getCurrentHP(), epsilon);
+        archer2.attackedByCavalry(attackerCavalry);
+        assertEquals(50, archer2.getCurrentHP(), epsilon);
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Test @Override
     public void testAttackedByInfantry() {
+        archer.attackedByInfantry(attackerInfantryNoAP);
+        assertEquals(100, archer.getCurrentHP(), epsilon);
+        archer.attackedByInfantry(attackerInfantryDead);
+        assertEquals(100, archer.getCurrentHP(), epsilon);
+        archer.attackedByInfantry(attackerInfantry);
+        assertEquals(0, archer.getCurrentHP(), epsilon);
+        archer2.attackedByInfantry(attackerInfantry);
+        assertEquals(80, archer2.getCurrentHP(), epsilon);
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Test @Override
     public void testAttackedBySiege() {
+        archer.attackedBySiege(attackerSiegeNoAP);
+        assertEquals(100, archer.getCurrentHP(), epsilon);
+        archer.attackedBySiege(attackerSiegeDead);
+        assertEquals(100, archer.getCurrentHP(), epsilon);
+        archer.attackedBySiege(attackerSiege);
+        assertEquals(0, archer.getCurrentHP(), epsilon);
+        archer2.attackedBySiege(attackerSiege);
+        assertEquals(50, archer2.getCurrentHP(), epsilon);
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Test @Override
     public void testCuredByMonk() {
-
+        archer.curedByMonk(attackerMonkNoAP);
+        assertEquals(100, archer.getCurrentHP(), epsilon);
+        archer.curedByMonk(attackerMonkDead);
+        assertEquals(100, archer.getCurrentHP(), epsilon);
+        archer.curedByMonk(attackerMonk);
+        assertEquals(150, archer.getCurrentHP(), epsilon);
+        archer.curedByMonk(attackerMonk);
+        archer.curedByMonk(attackerMonk);
+        assertEquals(200, archer.getCurrentHP(), epsilon);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Test @Override
     public void testAttackedByCastle() {
+        archer.attackedByCastle(attackerCastleNoAP);
+        assertEquals(100, archer.getCurrentHP(), epsilon);
+        archer.attackedByCastle(attackerCastleDead);
+        assertEquals(100, archer.getCurrentHP(), epsilon);
+        archer.attackedByCastle(attackerCastle);
+        assertEquals(0, archer.getCurrentHP(), epsilon);
+        archer2.attackedByCastle(attackerCastle);
+        assertEquals(20, archer2.getCurrentHP(), epsilon);
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Test @Override
     public void testHandledByVillager() {
+        archer.handledByVillager(attackerVillagerNoAP);
+        assertEquals(100, archer.getCurrentHP(), epsilon);
+        archer.handledByVillager(attackerVillagerDead);
+        assertEquals(100, archer.getCurrentHP(), epsilon);
+        archer.handledByVillager(attackerVillager);
+        assertEquals(0, archer.getCurrentHP(), epsilon);
+        archer2.handledByVillager(attackerVillager);
+        assertEquals(100, archer2.getCurrentHP(), epsilon);
 
     }
 
+    //aaaaaaaaaaaa
+    /**
+     * {@inheritDoc}
+     */
     @Test @Override
     public void testInteractWithArcher() {
 
         for (Archer victimArcher : victimArcherList) {
             archer.interactWith(victimArcher);
         }
-        assertTrue(victimArcher1.isAlive());
-        assertFalse(victimArcher2.isAlive());
-        assertFalse(victimArcher3.isAlive());
-        assertTrue(victimArcherDead.getCurrentHP() == 0);
+        assertEquals(0, victimArcher1.getCurrentHP(), epsilon);
+        assertEquals(80, victimArcher2.getCurrentHP(), epsilon);
+        assertEquals(0, victimArcher3.getCurrentHP(), epsilon);
+        assertEquals(0, victimArcherNoAP.getCurrentHP(), epsilon);
+        assertEquals(0, victimArcherDead.getCurrentHP(), epsilon);
     }
+
+    /**
+     * {@inheritDoc}
+     */
     @Test @Override
     public void testInteractWithCavalry() {
         for (Cavalry victimCavalry : victimCavalryList) {
             archer.interactWith(victimCavalry);
         }
+        assertEquals(0, victimCavalry1.getCurrentHP(), epsilon);
+        assertEquals(100, victimCavalry2.getCurrentHP(), epsilon);
+        assertEquals(0, victimCavalry3.getCurrentHP(), epsilon);
+        assertEquals(0, victimCavalryNoAP.getCurrentHP(), epsilon);
+        assertEquals(0, victimCavalryDead.getCurrentHP(), epsilon);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Test @Override
     public void testInteractWithInfantry() {
+        for (Infantry victimInfantry : victimInfantryList) {
+            archer.interactWith(victimInfantry);
+        }
+        assertEquals(0, victimInfantry1.getCurrentHP(), epsilon);
+        assertEquals(80, victimInfantry2.getCurrentHP(), epsilon);
+        assertEquals(0, victimInfantry3.getCurrentHP(), epsilon);
+        assertEquals(0, victimInfantryNoAP.getCurrentHP(), epsilon);
+        assertEquals(0, victimInfantryDead.getCurrentHP(), epsilon);
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Test @Override
     public void testInteractWithMonk() {
-
+        for (Monk victimMonk : victimMonkList) {
+            archer.interactWith(victimMonk);
+        }
+        assertEquals(0, victimMonk1.getCurrentHP(), epsilon);
+        assertEquals(0, victimMonk2.getCurrentHP(), epsilon);
+        assertEquals(0, victimMonk3.getCurrentHP(), epsilon);
+        assertEquals(0, victimMonkNoAP.getCurrentHP(), epsilon);
+        assertEquals(0, victimMonkDead.getCurrentHP(), epsilon);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Test @Override
     public void testInteractWithSiege() {
-
+        for (Siege victimSiege : victimSiegeList) {
+            archer.interactWith(victimSiege);
+        }
+        assertEquals(20, victimSiege1.getCurrentHP(), epsilon);
+        assertEquals(120, victimSiege2.getCurrentHP(), epsilon);
+        assertEquals(0, victimSiege3.getCurrentHP(), epsilon);
+        assertEquals(20, victimSiegeNoAP.getCurrentHP(), epsilon);
+        assertEquals(0, victimSiegeDead.getCurrentHP(), epsilon);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Test @Override
     public void testInteractWithVillager() {
-
+        for (Villager victimVillager : victimVillagerList) {
+            archer.interactWith(victimVillager);
+        }
+        assertEquals(0, victimVillager1.getCurrentHP(), epsilon);
+        assertEquals(50, victimVillager2.getCurrentHP(), epsilon);
+        assertEquals(0, victimVillager3.getCurrentHP(), epsilon);
+        assertEquals(0, victimVillagerNoAP.getCurrentHP(), epsilon);
+        assertEquals(0, victimVillagerDead.getCurrentHP(), epsilon);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Test @Override
     public void testInteractWithBarracks() {
-
+        for (Barracks victimBarracks : victimBarracksList) {
+            archer.interactWith(victimBarracks);
+        }
+        assertEquals(30, victimBarracks1.getCurrentHP(), epsilon);
+        assertEquals(130, victimBarracks2.getCurrentHP(), epsilon);
+        assertEquals(30, victimBarracks3.getCurrentHP(), epsilon);
+        assertEquals(30, victimBarracksNoAP.getCurrentHP(), epsilon);
+        assertEquals(0, victimBarracksDead.getCurrentHP(), epsilon);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Test @Override
     public void testInteractWithCastle() {
-
+        for (Infantry victimInfantry : victimInfantryList) {
+            archer.interactWith(victimInfantry);
+        }
+        assertEquals(90, victimInfantry1.getCurrentHP(), epsilon);
+        assertEquals(190, victimInfantry2.getCurrentHP(), epsilon);
+        assertEquals(40, victimInfantry3.getCurrentHP(), epsilon);
+        assertEquals(90, victimInfantryNoAP.getCurrentHP(), epsilon);
+        assertEquals(0, victimInfantryDead.getCurrentHP(), epsilon);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Test @Override
     public void testNoAPInteraction() {
         for (int i = 0; i < victimEntityList.length; i++){
@@ -207,6 +359,9 @@ public class ArcherTest extends AbstractAttackerTest {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Test @Override
     public void testDeadInteraction() {
         for (int i = 0; i < victimEntityList.length; i++){

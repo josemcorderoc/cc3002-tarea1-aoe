@@ -20,7 +20,6 @@ public abstract class AbstractEntity implements IAttackable {
 
     private static final Map<String, Float> interactionWithMe = new HashMap<String, Float>();
 
-
     protected AbstractEntity(float hp) {
         this(hp, 0);
     }
@@ -41,9 +40,22 @@ public abstract class AbstractEntity implements IAttackable {
         interactionWithMe.put("Castle", coef[6]);
     }
 
+    /**
+     * Getter method for current hit points
+     * @return currentHP
+     */
     public float getCurrentHP() { return currentHP; }
+
+    /**
+     * Setter method for current hit points
+     * @param newHitPoints
+     */
     public void setCurrentHP(float newHitPoints) { currentHP = newHitPoints; }
 
+    /**
+     * Getter method
+     * @return
+     */
     public float getMaxHP() { return currentHP; }
     public void setMaxHP(float newMaxHP) { currentHP = newMaxHP; }
 

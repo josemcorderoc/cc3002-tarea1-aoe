@@ -83,6 +83,13 @@ public abstract class AbstractAttackerTest extends AbstractAttackableTest {
     @Override
     /**
      * Initialize victim entities and arrays
+     *
+     * Entities follow this structure:
+     * -victimENTITY1 = new ENTITY(100, 100)
+     * -victimENTITY2 = new ENTITY(200, 100)
+     * -victimENTITY3 = new ENTITY(50, 100)
+     * -victimENTITYNoAP = new ENTITY(100, 0)
+     * -victimENTITYDead = new ENTITY(0, 100)
      */
     void setUp() {
         super.setUp();
@@ -96,50 +103,50 @@ public abstract class AbstractAttackerTest extends AbstractAttackableTest {
         victimBarracksToCompare = new Barracks(100);
         victimCastleToCompare = new Castle(100,100);
 
-        victimArcher1 = new Archer(200, 100);
-        victimArcher2 = new Archer(100, 100);
+        victimArcher1 = new Archer(100, 100);
+        victimArcher2 = new Archer(200, 100);
         victimArcher3 = new Archer(50, 100);
         victimArcherNoAP = new Archer(100, 0);
         victimArcherDead = new Archer(0, 100);
 
-        victimCavalry1 = new Cavalry(200, 100); 
-        victimCavalry2 = new Cavalry(100, 100); 
+        victimCavalry1 = new Cavalry(100, 100);
+        victimCavalry2 = new Cavalry(200, 100);
         victimCavalry3 = new Cavalry(50, 100);  
         victimCavalryNoAP = new Cavalry(100, 0);
         victimCavalryDead = new Cavalry(0, 100);
 
-        victimInfantry1 = new Infantry(200, 100);
-        victimInfantry2 = new Infantry(100, 100);
+        victimInfantry1 = new Infantry(100, 100);
+        victimInfantry2 = new Infantry(200, 100);
         victimInfantry3 = new Infantry(50, 100);
         victimInfantryNoAP = new Infantry(100, 0);
         victimInfantryDead = new Infantry(0, 100);
 
-        victimMonk1 = new Monk(200, 100);
-        victimMonk2 = new Monk(100, 100);
+        victimMonk1 = new Monk(100, 100);
+        victimMonk2 = new Monk(200, 100);
         victimMonk3 = new Monk(50, 100);
         victimMonkNoAP = new Monk(100, 0);
         victimMonkDead = new Monk(0, 100);
 
-        victimSiege1 = new Siege(200, 100);
-        victimSiege2 = new Siege(100, 100);
+        victimSiege1 = new Siege(100, 100);
+        victimSiege2 = new Siege(200, 100);
         victimSiege3 = new Siege(50, 100);
         victimSiegeNoAP = new Siege(100, 0);
         victimSiegeDead = new Siege(0, 100);
 
-        victimVillager1 = new Villager(200, 100);
-        victimVillager2 = new Villager(100, 100);
+        victimVillager1 = new Villager(100, 100);
+        victimVillager2 = new Villager(200, 100);
         victimVillager3 = new Villager(50, 100);
         victimVillagerNoAP = new Villager(100, 0);
         victimVillagerDead = new Villager(0, 100);
 
-        victimBarracks1 = new Barracks(200);
-        victimBarracks2 = new Barracks(100);
+        victimBarracks1 = new Barracks(100);
+        victimBarracks2 = new Barracks(200);
         victimBarracks3 = new Barracks(50);
         victimBarracksNoAP = new Barracks(100);
         victimBarracksDead = new Barracks(0);
 
-        victimCastle1 = new Castle(200, 100);
-        victimCastle2 = new Castle(100, 100);
+        victimCastle1 = new Castle(100, 100);
+        victimCastle2 = new Castle(200, 100);
         victimCastle3 = new Castle(50, 100);
         victimCastleNoAP = new Castle(100, 0);
         victimCastleDead = new Castle(0, 100);

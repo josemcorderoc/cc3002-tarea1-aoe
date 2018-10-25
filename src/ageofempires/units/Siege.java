@@ -16,6 +16,7 @@ public class Siege extends AbstractUnit {
      */
     public Siege(float hp, float ap) {
         super(hp, ap);
+        setMaxHP(hp);
     }
 
     @Override
