@@ -4,7 +4,7 @@ import ageofempires.AbstractEntity;
 import ageofempires.buildings.*;
 import ageofempires.units.*;
 
-public abstract class AbstractAttackerTest {
+public abstract class AbstractAttackerTest extends AbstractAttackableTest {
 
     Archer victimArcherToCompare;
 
@@ -71,16 +71,22 @@ public abstract class AbstractAttackerTest {
     Barracks victimBarracksDead;
 
 
-    Archer[] archerList = new Archer[5];
-    Cavalry[] cavalryList = new Cavalry[5];
-    Infantry[] infantryList = new Infantry[5];
-    Monk[] monkList = new Monk[5];
-    Siege[] siegeList = new Siege[5];
-    Villager[] villagerList = new Villager[5];
-    Barracks[] barracksList = new Barracks[5];
-    Castle[] castleList = new Castle[5];
+    Archer[] victimArcherList = new Archer[5];
+    Cavalry[] victimCavalryList = new Cavalry[5];
+    Infantry[] victimInfantryList = new Infantry[5];
+    Monk[] victimMonkList = new Monk[5];
+    Siege[] victimSiegeList = new Siege[5];
+    Villager[] victimVillagerList = new Villager[5];
+    Barracks[] victimBarracksList = new Barracks[5];
+    Castle[] victimCastleList = new Castle[5];
 
-    public void setUp() {
+    AbstractEntity[] victimEntityList = new AbstractEntity[8];
+    AbstractEntity[] entityListToCompare = new AbstractEntity[8];
+
+
+    @Override
+    void setUp() {
+        super.setUp();
         
         victimArcherToCompare = new Archer(100,100);
         victimCavalryToCompare = new Cavalry(100,100);
@@ -140,91 +146,81 @@ public abstract class AbstractAttackerTest {
         victimCastleDead = new Castle(0, 100);
         
 
-        archerList[0] = victimArcher1;
-        archerList[1] = victimArcher2;
-        archerList[2] = victimArcher3;
-        archerList[3] = victimArcherNoAP;
-        archerList[4] = victimArcherDead; 
+        victimArcherList[0] = victimArcher1;
+        victimArcherList[1] = victimArcher2;
+        victimArcherList[2] = victimArcher3;
+        victimArcherList[3] = victimArcherNoAP;
+        victimArcherList[4] = victimArcherDead;
 
-        cavalryList[0] = victimCavalry1;
-        cavalryList[1] = victimCavalry2;
-        cavalryList[2] = victimCavalry3;
-        cavalryList[3] = victimCavalryNoAP;
-        cavalryList[4] = victimCavalryDead;
+        victimCavalryList[0] = victimCavalry1;
+        victimCavalryList[1] = victimCavalry2;
+        victimCavalryList[2] = victimCavalry3;
+        victimCavalryList[3] = victimCavalryNoAP;
+        victimCavalryList[4] = victimCavalryDead;
 
-        infantryList[0] = victimInfantry1;
-        infantryList[1] = victimInfantry2;
-        infantryList[2] = victimInfantry3;
-        infantryList[3] = victimInfantryNoAP;
-        infantryList[4] = victimInfantryDead;
+        victimInfantryList[0] = victimInfantry1;
+        victimInfantryList[1] = victimInfantry2;
+        victimInfantryList[2] = victimInfantry3;
+        victimInfantryList[3] = victimInfantryNoAP;
+        victimInfantryList[4] = victimInfantryDead;
 
-        monkList[0] = victimMonk1;
-        monkList[1] = victimMonk2;
-        monkList[2] = victimMonk3;
-        monkList[3] = victimMonkNoAP;
-        monkList[4] = victimMonkDead;
+        victimMonkList[0] = victimMonk1;
+        victimMonkList[1] = victimMonk2;
+        victimMonkList[2] = victimMonk3;
+        victimMonkList[3] = victimMonkNoAP;
+        victimMonkList[4] = victimMonkDead;
 
-        siegeList[0] = victimSiege1 ;
-        siegeList[1] = victimSiege2 ;
-        siegeList[2] = victimSiege3 ;
-        siegeList[3] = victimSiegeNoAP;
-        siegeList[4] = victimSiegeDead;
+        victimSiegeList[0] = victimSiege1 ;
+        victimSiegeList[1] = victimSiege2 ;
+        victimSiegeList[2] = victimSiege3 ;
+        victimSiegeList[3] = victimSiegeNoAP;
+        victimSiegeList[4] = victimSiegeDead;
 
-        villagerList[0] = victimVillager1;
-        villagerList[1] = victimVillager2;
-        villagerList[2] = victimVillager3;
-        villagerList[3] = victimVillagerNoAP;
-        villagerList[4] = victimVillagerDead;
+        victimVillagerList[0] = victimVillager1;
+        victimVillagerList[1] = victimVillager2;
+        victimVillagerList[2] = victimVillager3;
+        victimVillagerList[3] = victimVillagerNoAP;
+        victimVillagerList[4] = victimVillagerDead;
 
-        barracksList[0] = victimBarracks1;
-        barracksList[1] = victimBarracks2;
-        barracksList[2] = victimBarracks3;
-        barracksList[3] = victimBarracksNoAP;
-        barracksList[4] = victimBarracksDead;
+        victimBarracksList[0] = victimBarracks1;
+        victimBarracksList[1] = victimBarracks2;
+        victimBarracksList[2] = victimBarracks3;
+        victimBarracksList[3] = victimBarracksNoAP;
+        victimBarracksList[4] = victimBarracksDead;
 
-        castleList[0] = victimCastle1;
-        castleList[1] = victimCastle2;
-        castleList[2] = victimCastle3;
-        castleList[3] = victimCastleNoAP;
-        castleList[4] = victimCastleDead;
+        victimCastleList[0] = victimCastle1;
+        victimCastleList[1] = victimCastle2;
+        victimCastleList[2] = victimCastle3;
+        victimCastleList[3] = victimCastleNoAP;
+        victimCastleList[4] = victimCastleDead;
+
+        victimEntityList[0] = victimArcher1;
+        victimEntityList[1] = victimCavalry1;
+        victimEntityList[2] = victimInfantry1;
+        victimEntityList[3] = victimMonk1;
+        victimEntityList[4] = victimSiege1;
+        victimEntityList[5] = victimVillager1;
+        victimEntityList[6] = victimBarracks1;
+        victimEntityList[7] = victimCastle1;
+
+        entityListToCompare[0] = victimArcherToCompare;
+        entityListToCompare[1] = victimCavalryToCompare;
+        entityListToCompare[2] = victimInfantryToCompare;
+        entityListToCompare[3] = victimMonkToCompare;
+        entityListToCompare[4] = victimSiegeToCompare;
+        entityListToCompare[5] = victimVillagerToCompare;
+        entityListToCompare[6] = victimBarracksToCompare;
+        entityListToCompare[7] = victimCastleToCompare;
     }
-        /**
-         * Test how does this entity interact with archer units
-         */
-        abstract void testInteractWithArcher();
 
-        /**
-         * Test how does this entity interact with cavalry units
-         */
-        abstract void testInteractWithCavalry();
-
-        /**
-         * Test how does this entity interact with infantry units
-         */
-        abstract void testInteractWithInfantry();
-
-        /**
-         * Test how does this entity interact with monk units
-         */
-        abstract void testInteractWithMonk();
-
-        /**
-         * Test how does this entity interact with siege units
-         */
-        abstract void testInteractWithSiege();
-
-        /**
-         * Test how does this entity interact with villager units
-         */
-        abstract void testInteractWithVillager();
-
-        /**
-         * Test how does this entity interact with barracks buildings
-         */
-        abstract void testInteractWithBarracks();
-
-        /**
-         * Test how does this entity interact with castle buildings
-         */
-        abstract void testInteractWithCastle();
+    public abstract void testInteractWithArcher();
+    public abstract void testInteractWithCavalry();
+    public abstract void testInteractWithInfantry();
+    public abstract void testInteractWithMonk();
+    public abstract void testInteractWithSiege();
+    public abstract void testInteractWithVillager();
+    public abstract void testInteractWithBarracks();
+    public abstract void testInteractWithCastle();
+    public abstract void testNoAPInteraction();
+    public abstract void testDeadInteraction();
 }

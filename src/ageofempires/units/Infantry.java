@@ -12,12 +12,18 @@ public class Infantry extends AbstractUnit {
         setInteractionWithMe(coefInfantry);
     }
 
+    /**
+     * Infantry unit constructor
+     * @param hp hit points
+     * @param ap attack points
+     */
     public Infantry(float hp, float ap) {
         super(hp, ap);
     }
 
     @Override
     public void interactWith(IAttackable victim) {
+        if (!isAlive()) { return; }
         victim.attackedByInfantry(this);
     }
 }

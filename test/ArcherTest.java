@@ -2,98 +2,167 @@ package test;
 
 import ageofempires.units.Archer;
 
+import ageofempires.units.Cavalry;
 import org.junit.*;
 import static org.junit.Assert.*;
 
 public class ArcherTest extends AbstractAttackerTest {
 
-    private Archer attackerArcher;
-    private Archer attackerArcherNoAP;
-    private Archer attackerArcherDead;
+    private Archer archer;
+    private Archer archerNoAP;
+    private Archer archerDead;
 
     @Before
     public void setUp(){
         super.setUp();
-        attackerArcher = new Archer(100,200);
-        attackerArcherNoAP = new Archer(100,0);
-        attackerArcherDead = new Archer(0,100);
+        archer = new Archer(100,100);
+        archerNoAP = new Archer(100,0);
+        archerDead = new Archer(0,100);
     }
 
-    @Test
-    public void testEquals(){
-        assertFalse(attackerArcher.equals(new Archer(500, 200)));
-        assertFalse(attackerArcher.equals(attackerArcherNoAP));
-        assertFalse(attackerArcher.equals(victimMonk1));
+    @Test @Override
+    void testEquals(){
+        assertEquals(archer, archer);
+        assertEquals(archer, new Archer(100,100));
+        assertEquals(archer, victimArcherToCompare);
+
+        assertNotEquals(archer, new Archer(500, 200));
+        assertNotEquals(archer, archerNoAP);
+        assertNotEquals(archer, victimMonk1);
     }
 
-    /**
-     * Test how does this entity interact with archer units
-     */
-    @Override
+    @Test @Override
+    void testIsAlive() {
+
+    }
+
+    @Test @Override
+    void testGetCurrentHP() {
+
+    }
+
+    @Test @Override
+    void testSetCurrentHP() {
+
+    }
+
+    @Test @Override
+    void testGetMaxHP() {
+
+    }
+
+    @Test @Override
+    void testSetMaxHP() {
+
+    }
+
+    @Test @Override
+    void testGetAttackPoints() {
+
+    }
+
+    @Test @Override
+    void testSetAttackPoints() {
+
+    }
+
+    @Test @Override
+    void testAttackedByArcher() {
+
+    }
+
+    @Test @Override
+    void testAttackedByCavalry() {
+
+    }
+
+    @Test @Override
+    void testAttackedByInfantry() {
+
+    }
+
+    @Test @Override
+    void testAttackedBySiege() {
+
+    }
+
+    @Test @Override
+    void testCuredByMonk() {
+
+    }
+
+    @Test @Override
+    void testAttackedByCastle() {
+
+    }
+
+    @Test @Override
+    void testHandledByVillager() {
+
+    }
+
+    @Test @Override
     void testInteractWithArcher() {
-        for (Archer archer : archerList) {
-            attackerArcher.interactWith(archer);
+
+        for (Archer victimArcher : victimArcherList) {
+            archer.interactWith(victimArcher);
         }
         assertTrue(victimArcher1.isAlive());
         assertFalse(victimArcher2.isAlive());
         assertFalse(victimArcher3.isAlive());
-        assertFalse(victimArcherDead.isAlive());
+        assertTrue(victimArcherDead.getCurrentHP() == 0);
     }
-
-    /**
-     * Test how does this entity interact with cavalry units
-     */
-    @Override
+    @Test @Override
     void testInteractWithCavalry() {
-
-
+        for (Cavalry victimCavalry : victimCavalryList) {
+            archer.interactWith(victimCavalry);
+        }
     }
 
-    /**
-     * Test how does this entity interact with infantry units
-     */
-    @Override
+    @Test @Override
     void testInteractWithInfantry() {
 
     }
 
-    /**
-     * Test how does this entity interact with monk units
-     */
-    @Override
+    @Test @Override
     void testInteractWithMonk() {
 
     }
 
-    /**
-     * Test how does this entity interact with siege units
-     */
-    @Override
+    @Test @Override
     void testInteractWithSiege() {
 
     }
 
-    /**
-     * Test how does this entity interact with villager units
-     */
-    @Override
+    @Test @Override
     void testInteractWithVillager() {
 
     }
 
-    /**
-     * Test how does this entity interact with barracks buildings
-     */
-    @Override
+    @Test @Override
     void testInteractWithBarracks() {
 
     }
 
-    /**
-     * Test how does this entity interact with castle buildings
-     */
-    @Override
+    @Test @Override
     void testInteractWithCastle() {
+
+    }
+
+    @Test @Override
+    void testNoAPInteraction() {
+        for (int i = 0; i < victimEntityList.length; i++){
+            archerNoAP.interactWith(victimEntityList[i]);
+            assertEquals(victimEntityList[i], entityListToCompare[i]);
+        }
+    }
+
+    @Test @Override
+    void testDeadInteraction() {
+        for (int i = 0; i < victimEntityList.length; i++){
+            archerDead.interactWith(victimEntityList[i]);
+            assertEquals(victimEntityList[i], entityListToCompare[i]);
+        }
 
     }
 

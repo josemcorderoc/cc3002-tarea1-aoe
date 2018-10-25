@@ -9,6 +9,7 @@ import java.util.Map;
 
 /**
  * Implements properties and behavior of all attackable entitys of the game
+ *
  * @author Jose Miguel Cordero
  */
 public abstract class AbstractEntity implements IAttackable {
@@ -40,67 +41,19 @@ public abstract class AbstractEntity implements IAttackable {
         interactionWithMe.put("Castle", coef[6]);
     }
 
-    /**
-     * {@inheritDoc}
-     * @param archerUnit attacker archer unit
-     */
-    public void attackedByArcher(Archer archerUnit){
-        if (!isAlive()) { return; }
-        currentHP -= interactionWithMe.get("Archer")*archerUnit.getAttackPoints();
-    }
-
-    /**
-     * {@inheritDoc}
-     * @param cavalryUnit attacker cavalry unit
-     */
-    public void attackedByCavalry(Cavalry cavalryUnit){
-        if (!isAlive()) { return; }
-        currentHP -= interactionWithMe.get("Cavalry")*cavalryUnit.getAttackPoints();
-    }
-
-
-
-    public void attackedByInfantry(Infantry infantryUnit){
-        if (!isAlive()) { return; }
-        currentHP -= interactionWithMe.get("Infantry")*infantryUnit.getAttackPoints();
-    }
-
-    public void attackedBySiege(Siege siegeUnit){
-        if (!isAlive()) { return; }
-        currentHP -= interactionWithMe.get("Siege")*siegeUnit.getAttackPoints();
-    }
-
-    public void attackedByCastle(Castle castleBuilding){
-        if (!isAlive()) { return; }
-        currentHP -= interactionWithMe.get("Castle")*castleBuilding.getAttackPoints();
-    }
-
-    public void curedByMonk(Monk monk){
-        if (!isAlive()) { return; }
-        currentHP += interactionWithMe.get("Monk")*monk.getAttackPoints();
-    }
-
-    public void handledByVillager(Villager villager){
-        if (!isAlive()) { return; }
-        currentHP -= interactionWithMe.get("Villager")*villager.getAttackPoints();
-    }
-
-    @Override
     public float getCurrentHP() { return currentHP; }
-
-    @Override
     public void setCurrentHP(float newHitPoints) { currentHP = newHitPoints; }
 
     public float getMaxHP() { return currentHP; }
-
     public void setMaxHP(float newMaxHP) { currentHP = newMaxHP; }
 
-    @Override
     public float getAttackPoints() { return attackPoints;}
-
-    @Override
     public void setAttackPoints(float newAttackPoints) {attackPoints = newAttackPoints;}
 
+    /**
+     * {@inheritDoc}
+     * @return boolean
+     */
     @Override
     public boolean isAlive() { return currentHP > 0; }
 
@@ -108,15 +61,87 @@ public abstract class AbstractEntity implements IAttackable {
     public boolean equals(Object o) {
         if (this.getClass() == o.getClass()) {
             return this.currentHP == ((AbstractEntity)o).currentHP &&
-                   this.attackPoints == ((AbstractEntity)o).attackPoints;
+                    this.attackPoints == ((AbstractEntity)o).attackPoints;
         }
         return false;
     }
 
+    /**
+     * {@inheritDoc}
+     * @param archerUnit attacker archer unit
+     */
+    @Override
+    public void attackedByArcher(Archer archerUnit) {
+        if (!isAlive()) { return; }
+        currentHP -= interactionWithMe.get("Archer")*archerUnit.getAttackPoints();
+        if (currentHP < 0) { setCurrentHP(0);}
+    }
 
+    /**
+     * {@inheritDoc}
+     * @param cavalryUnit attacker cavalry unit
+     */
+    @Override
+    public void attackedByCavalry(Cavalry cavalryUnit) {
+        if (!isAlive()) { return; }
+        currentHP -= interactionWithMe.get("Cavalry")*cavalryUnit.getAttackPoints();
+        if (currentHP < 0) { setCurrentHP(0);}
+    }
 
+    /**
+     * {@inheritDoc}
+     * @param infantryUnit attacker infantry unit
+     */
+    @Override
+    public void attackedByInfantry(Infantry infantryUnit) {
+        if (!isAlive()) { return; }
+        currentHP -= interactionWithMe.get("Infantry")*infantryUnit.getAttackPoints();
+        if (currentHP < 0) { setCurrentHP(0);}
+    }
 
+    /**
+     * {@inheritDoc}
+     * @param siegeUnit attacker siege unit
+     */
+    @Override
+    public void attackedBySiege(Siege siegeUnit) {
+        if (!isAlive()) { return; }
+        currentHP -= interactionWithMe.get("Siege")*siegeUnit.getAttackPoints();
+        if (currentHP < 0) { setCurrentHP(0);}
+    }
 
+    /**
+     * {@inheritDoc}
+     * @param castleBuilding attacker castle building
+     */
+    @Override
+    public void attackedByCastle(Castle castleBuilding) {
+        if (!isAlive()) { return; }
+        currentHP -= interactionWithMe.get("Castle")*castleBuilding.getAttackPoints();
+        if (currentHP < 0) { setCurrentHP(0);}
+    }
 
+    /**
+     * {@inheritDoc}
+     * @param monk
+     */
+    @Override
+    public void curedByMonk(Monk monk) {
+        if (!isAlive()) { return; }
+        currentHP += interactionWithMe.get("Monk")*monk.getAttackPoints();
+        if (currentHP > maxHP) { setCurrentHP(maxHP); }
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param villager
+     */
+    @Override
+    public void handledByVillager(Villager villager) {
+        if (!isAlive()) { return; }
+        currentHP -= interactionWithMe.get("Villager")*villager.getAttackPoints();
+        if (currentHP < 0) { setCurrentHP(0);}
+        else if (currentHP > maxHP) { setCurrentHP(maxHP); }
+    }
 
 }

@@ -9,6 +9,11 @@ public class Archer extends AbstractUnit {
         setInteractionWithMe(coefArcher);
     }
 
+    /**
+     * Archer unit constructor
+     * @param hp hit points
+     * @param ap attack points
+     */
     public Archer(float hp, float ap) {
         super(hp, ap);
     }
@@ -16,6 +21,7 @@ public class Archer extends AbstractUnit {
 
     @Override
     public void interactWith(IAttackable victim) {
+        if (!isAlive()) { return; }
         victim.attackedByArcher(this);
     }
 

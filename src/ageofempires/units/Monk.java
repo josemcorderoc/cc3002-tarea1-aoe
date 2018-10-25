@@ -10,12 +10,18 @@ public class Monk extends AbstractUnit {
         setInteractionWithMe(coefMonk);
     }
 
+    /**
+     * Monk unit constructor
+     * @param hp hit points
+     * @param ap attack points
+     */
     public Monk(float hp, float ap) {
         super(hp, ap);
     }
 
     @Override
     public void interactWith(IAttackable victim) {
+        if (!isAlive()) { return; }
         victim.curedByMonk(this);
     }
 

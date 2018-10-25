@@ -9,12 +9,18 @@ public class Siege extends AbstractUnit {
         setInteractionWithMe(coefSiege);
     }
 
+    /**
+     * Siege unit constructor
+     * @param hp hit points
+     * @param ap attack points
+     */
     public Siege(float hp, float ap) {
         super(hp, ap);
     }
 
     @Override
     public void interactWith(IAttackable victim) {
+        if (!isAlive()) { return; }
         victim.attackedBySiege(this);
     }
 }

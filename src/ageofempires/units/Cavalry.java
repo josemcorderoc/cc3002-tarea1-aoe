@@ -9,10 +9,16 @@ public class Cavalry extends AbstractUnit {
         setInteractionWithMe(coefCavalry);
     }
 
+    /**
+     * Cavalry unit constructor
+     * @param hp
+     * @param ap
+     */
     public Cavalry(float hp, float ap) { super(hp, ap); }
 
     @Override
     public void interactWith(IAttackable victim) {
+        if (!isAlive()) { return; }
         victim.attackedByCavalry(this);
     }
 }
