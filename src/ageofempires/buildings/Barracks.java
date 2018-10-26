@@ -1,8 +1,9 @@
 package ageofempires.buildings;
 
 /**
- * The Barracks class models a barracks building: weak against Siege units,
- * weak against all other attacker units, it can not attack
+ * Barracks building class
+ *
+ * @author Jose Miguel Cordero
  */
 public class Barracks extends AbstractBuilding {
 

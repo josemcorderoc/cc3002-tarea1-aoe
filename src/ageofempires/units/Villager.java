@@ -2,6 +2,11 @@ package ageofempires.units;
 
 import ageofempires.IAttackable;
 
+/**
+ * Villager unit class
+ *
+ * @author Jose Miguel Cordero
+ */
 public class Villager extends AbstractUnit {
 
     private float[] coefVillager = {1.5f, 1.5f, 1.5f, 1.5f, 1.0f, 0.5f, 1.2f};
@@ -18,6 +23,10 @@ public class Villager extends AbstractUnit {
         super(hp, ap);
     }
 
+    /**
+     * {@inheritDoc}
+     * @param victim entity to modify
+     */
     @Override
     public void interactWith(IAttackable victim) {
         if (!isAlive()) { return; }

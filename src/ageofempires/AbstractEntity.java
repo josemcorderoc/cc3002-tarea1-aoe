@@ -69,6 +69,11 @@ public abstract class AbstractEntity implements IAttackable {
     @Override
     public boolean isAlive() { return currentHP > 0; }
 
+    /**
+     * Check if 2 entities are the same
+     * @param o entity to compare
+     * @return true if equals, false else
+     */
     @Override
     public boolean equals(Object o) {
         if (this.getClass() == o.getClass()) {
