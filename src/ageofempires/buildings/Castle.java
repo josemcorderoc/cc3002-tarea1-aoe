@@ -6,7 +6,7 @@ import ageofempires.IAttacker;
 
 public class Castle extends AbstractBuilding implements IAttacker {
 
-    private float[] coefCastle = {0.3f, 0.1f, 0.3f, 2.0f, 0.3f, 0f, 0.1f};
+    private float[] coefCastle = {0.3f, 0.1f, 0.3f, 2.0f, -0.3f, 0f, 0.1f};
     {
         setInteractionWithMe(coefCastle);
     }

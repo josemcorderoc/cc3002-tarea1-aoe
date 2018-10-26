@@ -1,6 +1,7 @@
 package test;
 
 import ageofempires.buildings.Barracks;
+import ageofempires.buildings.Castle;
 import ageofempires.units.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +25,7 @@ public class SiegeTest extends AbstractAttackerTest {
      * Initializes siege for testing
      */
     @Before
-    void setUp(){
+    public void setUp(){
         super.setUp();
         siege = new Siege(100,100);
         siege2 = new Siege(200,100);
@@ -61,8 +62,8 @@ public class SiegeTest extends AbstractAttackerTest {
      */
     @Test @Override
     public void testGetCurrentHP() {
-        assertEquals(100, siege.getCurrentHP(),0.0);
-        assertEquals(200, siegeNoAP.getCurrentHP(),0.0);
+        assertEquals(100, siege.getCurrentHP(),epsilon);
+        assertEquals(100, siegeNoAP.getCurrentHP(),epsilon);
     }
 
     /**
@@ -71,9 +72,9 @@ public class SiegeTest extends AbstractAttackerTest {
     @Test @Override
     public void testSetCurrentHP() {
         siege.setCurrentHP(56.9f);
-        assertEquals(56.9, siege.getCurrentHP(),0.0);
+        assertEquals(56.9, siege.getCurrentHP(),epsilon);
         siege.setCurrentHP(245);
-        assertEquals(245, siege.getCurrentHP(),0.0);
+        assertEquals(245, siege.getCurrentHP(),epsilon);
     }
 
     /**
@@ -81,8 +82,8 @@ public class SiegeTest extends AbstractAttackerTest {
      */
     @Test @Override
     public void testGetMaxHP() {
-        assertEquals(200, siege.getMaxHP(), epsilon);
-        assertEquals(400, siegeNoAP.getMaxHP(), epsilon);
+        assertEquals(100, siege.getMaxHP(), epsilon);
+        assertEquals(100, siegeNoAP.getMaxHP(), epsilon);
     }
 
     /**
@@ -91,9 +92,9 @@ public class SiegeTest extends AbstractAttackerTest {
     @Test @Override
     public void testSetMaxHP() {
         siege.setMaxHP(134.6f);
-        assertEquals(134.6f, siege.getMaxHP(),0.0);
+        assertEquals(134.6f, siege.getMaxHP(),epsilon);
         siege.setMaxHP(54);
-        assertEquals(54, siege.getMaxHP(),0.0);
+        assertEquals(54, siege.getMaxHP(),epsilon);
     }
 
     /**
@@ -101,8 +102,8 @@ public class SiegeTest extends AbstractAttackerTest {
      */
     @Test @Override
     public void testGetAttackPoints() {
-        assertEquals(100, siege.getAttackPoints(),0.0);
-        assertEquals(0, siegeNoAP.getAttackPoints(),0.0);
+        assertEquals(100, siege.getAttackPoints(),epsilon);
+        assertEquals(0, siegeNoAP.getAttackPoints(),epsilon);
     }
 
     /**
@@ -111,9 +112,9 @@ public class SiegeTest extends AbstractAttackerTest {
     @Test @Override
     public void testSetAttackPoints() {
         siege.setAttackPoints(45.7f);
-        assertEquals(45.7f, siege.getAttackPoints(), 0.0);
+        assertEquals(45.7f, siege.getAttackPoints(), epsilon);
         siege.setAttackPoints(66);
-        assertEquals(66,siege.getAttackPoints(), 0.0);
+        assertEquals(66,siege.getAttackPoints(), epsilon);
     }
 
     /**
@@ -128,7 +129,7 @@ public class SiegeTest extends AbstractAttackerTest {
         siege.attackedByArcher(attackerArcher);
         assertEquals(20, siege.getCurrentHP(), epsilon);
         siege2.attackedByArcher(attackerArcher);
-        assertEquals(120, siege.getCurrentHP(), epsilon);
+        assertEquals(120, siege2.getCurrentHP(), epsilon);
     }
 
     /**
@@ -262,7 +263,7 @@ public class SiegeTest extends AbstractAttackerTest {
             siege.interactWith(victimInfantry);
         }
         assertEquals(0, victimInfantry1.getCurrentHP(), epsilon);
-        assertEquals(100, victimInfantry2.getCurrentHP(), epsilon);
+        assertEquals(50, victimInfantry2.getCurrentHP(), epsilon);
         assertEquals(0, victimInfantry3.getCurrentHP(), epsilon);
         assertEquals(0, victimInfantryNoAP.getCurrentHP(), epsilon);
         assertEquals(0, victimInfantryDead.getCurrentHP(), epsilon);
@@ -333,14 +334,14 @@ public class SiegeTest extends AbstractAttackerTest {
      */
     @Test @Override
     public void testInteractWithCastle() {
-        for (Infantry victimInfantry : victimInfantryList) {
-            siege.interactWith(victimInfantry);
+        for (Castle victimCastle : victimCastleList) {
+            siege.interactWith(victimCastle);
         }
-        assertEquals(0, victimInfantry1.getCurrentHP(), epsilon);
-        assertEquals(0, victimInfantry2.getCurrentHP(), epsilon);
-        assertEquals(0, victimInfantry3.getCurrentHP(), epsilon);
-        assertEquals(0, victimInfantryNoAP.getCurrentHP(), epsilon);
-        assertEquals(0, victimInfantryDead.getCurrentHP(), epsilon);
+        assertEquals(0, victimCastle1.getCurrentHP(), epsilon);
+        assertEquals(0, victimCastle2.getCurrentHP(), epsilon);
+        assertEquals(0, victimCastle3.getCurrentHP(), epsilon);
+        assertEquals(0, victimCastleNoAP.getCurrentHP(), epsilon);
+        assertEquals(0, victimCastleDead.getCurrentHP(), epsilon);
     }
 
     /**

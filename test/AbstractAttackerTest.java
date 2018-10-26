@@ -69,18 +69,18 @@ public abstract class AbstractAttackerTest extends AbstractAttackableTest {
 
     Archer[] victimArcherList = new Archer[5];
     Cavalry[] victimCavalryList = new Cavalry[5];
-    Infantry[] victimInfantryList = new Infantry[5];
+    Infantry[] victimInfantryList;
     Monk[] victimMonkList = new Monk[5];
     Siege[] victimSiegeList = new Siege[5];
     Villager[] victimVillagerList = new Villager[5];
     Barracks[] victimBarracksList = new Barracks[5];
     Castle[] victimCastleList = new Castle[5];
 
-    AbstractEntity[] victimEntityList = new AbstractEntity[8];
-    AbstractEntity[] entityListToCompare = new AbstractEntity[8];
+    AbstractEntity[] victimEntityList = new AbstractEntity[7];
+    AbstractEntity[] entityListToCompare = new AbstractEntity[7];
 
 
-    @Override
+
     /**
      * Initialize victim entities and arrays
      *
@@ -91,14 +91,15 @@ public abstract class AbstractAttackerTest extends AbstractAttackableTest {
      * -victimENTITYNoAP = new ENTITY(100, 0)
      * -victimENTITYDead = new ENTITY(0, 100)
      */
-    void setUp() {
+    @Override
+    public void setUp() {
         super.setUp();
         
         victimArcherToCompare = new Archer(100,100);
         victimCavalryToCompare = new Cavalry(100,100);
         victimInfantryToCompare = new Infantry(100,100);
-        victimMonkToCompare = new Monk(100,100);
         victimSiegeToCompare = new Siege(100,100);
+        victimMonkToCompare = new Monk(100,100);
         victimVillagerToCompare = new Villager(100,100);
         victimBarracksToCompare = new Barracks(100);
         victimCastleToCompare = new Castle(100,100);
@@ -164,6 +165,7 @@ public abstract class AbstractAttackerTest extends AbstractAttackableTest {
         victimCavalryList[3] = victimCavalryNoAP;
         victimCavalryList[4] = victimCavalryDead;
 
+        victimInfantryList = new Infantry[5];
         victimInfantryList[0] = victimInfantry1;
         victimInfantryList[1] = victimInfantry2;
         victimInfantryList[2] = victimInfantry3;
@@ -176,9 +178,9 @@ public abstract class AbstractAttackerTest extends AbstractAttackableTest {
         victimMonkList[3] = victimMonkNoAP;
         victimMonkList[4] = victimMonkDead;
 
-        victimSiegeList[0] = victimSiege1 ;
-        victimSiegeList[1] = victimSiege2 ;
-        victimSiegeList[2] = victimSiege3 ;
+        victimSiegeList[0] = victimSiege1;
+        victimSiegeList[1] = victimSiege2;
+        victimSiegeList[2] = victimSiege3;
         victimSiegeList[3] = victimSiegeNoAP;
         victimSiegeList[4] = victimSiegeDead;
 
@@ -203,20 +205,18 @@ public abstract class AbstractAttackerTest extends AbstractAttackableTest {
         victimEntityList[0] = victimArcher1;
         victimEntityList[1] = victimCavalry1;
         victimEntityList[2] = victimInfantry1;
-        victimEntityList[3] = victimMonk1;
-        victimEntityList[4] = victimSiege1;
-        victimEntityList[5] = victimVillager1;
-        victimEntityList[6] = victimBarracks1;
-        victimEntityList[7] = victimCastle1;
+        victimEntityList[3] = victimSiege1;
+        victimEntityList[4] = victimVillager1;
+        victimEntityList[5] = victimBarracks1;
+        victimEntityList[6] = victimCastle1;
 
         entityListToCompare[0] = victimArcherToCompare;
         entityListToCompare[1] = victimCavalryToCompare;
         entityListToCompare[2] = victimInfantryToCompare;
-        entityListToCompare[3] = victimMonkToCompare;
-        entityListToCompare[4] = victimSiegeToCompare;
-        entityListToCompare[5] = victimVillagerToCompare;
-        entityListToCompare[6] = victimBarracksToCompare;
-        entityListToCompare[7] = victimCastleToCompare;
+        entityListToCompare[3] = victimSiegeToCompare;
+        entityListToCompare[4] = victimVillagerToCompare;
+        entityListToCompare[5] = victimBarracksToCompare;
+        entityListToCompare[6] = victimCastleToCompare;
     }
 
     /**

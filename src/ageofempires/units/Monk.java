@@ -5,7 +5,7 @@ import ageofempires.buildings.Castle;
 
 public class Monk extends AbstractUnit {
 
-    private float[] coefMonk = {1000, 1000, 1000, 1000, 1000, 1000, 1000};
+    private float[] coefMonk = {10000f, 10000f, 10000f, 10000f, 0f, 0.5f, 10000f};
     {
         setInteractionWithMe(coefMonk);
     }
@@ -26,27 +26,37 @@ public class Monk extends AbstractUnit {
     }
 
     @Override
-    public void attackedByArcher(Archer archer){
-        setCurrentHP(0);
+    public void attackedByArcher(Archer archerUnit) {
+        if (this.isAlive() && archerUnit.isAlive()) {
+            setCurrentHP(0);
+        }
     }
 
     @Override
-    public void attackedByCavalry(Cavalry cavalry){
-        setCurrentHP(0);
+    public void attackedByCavalry(Cavalry cavalryUnit) {
+        if (this.isAlive() && cavalryUnit.isAlive()) {
+            setCurrentHP(0);
+        }
     }
 
     @Override
-    public void attackedByInfantry(Infantry infantry){
-        setCurrentHP(0);
+    public void attackedByInfantry(Infantry infantryUnit){
+        if (this.isAlive() && infantryUnit.isAlive()) {
+            setCurrentHP(0);
+        }
     }
 
     @Override
-    public void attackedBySiege(Siege siege){
-        setCurrentHP(0);
+    public void attackedBySiege(Siege siegeUnit){
+        if (this.isAlive() && siegeUnit.isAlive()) {
+            setCurrentHP(0);
+        }
     }
 
     @Override
-    public void attackedByCastle(Castle castle){
-        setCurrentHP(0);
+    public void attackedByCastle(Castle castleBuilding){
+        if (this.isAlive() && castleBuilding.isAlive()) {
+            setCurrentHP(0);
+        }
     }
 }

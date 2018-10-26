@@ -55,7 +55,7 @@ public abstract class AbstractAttackableTest {
      * -attackerENTITYNoAP = new ENTITY(100, 0)
      * -attackerENTITYDead = new ENTITY(0, 100)
      */
-    void setUp(){
+    public void setUp(){
 
         attackerArcher = new Archer(100, 100);
         attackerArcherNoAP = new Archer(100, 0);

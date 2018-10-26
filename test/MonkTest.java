@@ -1,6 +1,7 @@
 package test;
 
 import ageofempires.buildings.Barracks;
+import ageofempires.buildings.Castle;
 import ageofempires.units.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +24,7 @@ public class MonkTest extends AbstractAttackerTest {
      * Initializes monk for testing
      */
     @Before
-    void setUp(){
+    public void setUp(){
         super.setUp();
         monk = new Monk(100,100);
         monk2 = new Monk(200,100);
@@ -60,8 +61,8 @@ public class MonkTest extends AbstractAttackerTest {
      */
     @Test @Override
     public void testGetCurrentHP() {
-        assertEquals(100, monk.getCurrentHP(),0.0);
-        assertEquals(200, monkNoAP.getCurrentHP(),0.0);
+        assertEquals(100, monk.getCurrentHP(),epsilon);
+        assertEquals(100, monkNoAP.getCurrentHP(),epsilon);
     }
 
     /**
@@ -70,9 +71,9 @@ public class MonkTest extends AbstractAttackerTest {
     @Test @Override
     public void testSetCurrentHP() {
         monk.setCurrentHP(56.9f);
-        assertEquals(56.9, monk.getCurrentHP(),0.0);
+        assertEquals(56.9, monk.getCurrentHP(),epsilon);
         monk.setCurrentHP(245);
-        assertEquals(245, monk.getCurrentHP(),0.0);
+        assertEquals(245, monk.getCurrentHP(),epsilon);
     }
 
     /**
@@ -81,7 +82,7 @@ public class MonkTest extends AbstractAttackerTest {
     @Test @Override
     public void testGetMaxHP() {
         assertEquals(200, monk.getMaxHP(), epsilon);
-        assertEquals(400, monkNoAP.getMaxHP(), epsilon);
+        assertEquals(200, monkNoAP.getMaxHP(), epsilon);
     }
 
     /**
@@ -90,9 +91,9 @@ public class MonkTest extends AbstractAttackerTest {
     @Test @Override
     public void testSetMaxHP() {
         monk.setMaxHP(134.6f);
-        assertEquals(134.6f, monk.getMaxHP(),0.0);
+        assertEquals(134.6f, monk.getMaxHP(),epsilon);
         monk.setMaxHP(54);
-        assertEquals(54, monk.getMaxHP(),0.0);
+        assertEquals(54, monk.getMaxHP(),epsilon);
     }
 
     /**
@@ -100,8 +101,8 @@ public class MonkTest extends AbstractAttackerTest {
      */
     @Test @Override
     public void testGetAttackPoints() {
-        assertEquals(100, monk.getAttackPoints(),0.0);
-        assertEquals(0, monkNoAP.getAttackPoints(),0.0);
+        assertEquals(100, monk.getAttackPoints(),epsilon);
+        assertEquals(0, monkNoAP.getAttackPoints(),epsilon);
     }
 
     /**
@@ -110,9 +111,9 @@ public class MonkTest extends AbstractAttackerTest {
     @Test @Override
     public void testSetAttackPoints() {
         monk.setAttackPoints(45.7f);
-        assertEquals(45.7f, monk.getAttackPoints(), 0.0);
+        assertEquals(45.7f, monk.getAttackPoints(), epsilon);
         monk.setAttackPoints(66);
-        assertEquals(66,monk.getAttackPoints(), 0.0);
+        assertEquals(66,monk.getAttackPoints(), epsilon);
     }
 
     /**
@@ -219,7 +220,7 @@ public class MonkTest extends AbstractAttackerTest {
         monk.handledByVillager(attackerVillager);
         assertEquals(100, monk.getCurrentHP(), epsilon);
         monk2.handledByVillager(attackerVillager);
-        assertEquals(100, monk2.getCurrentHP(), epsilon);
+        assertEquals(200, monk2.getCurrentHP(), epsilon);
     }
 
     /**
@@ -334,14 +335,14 @@ public class MonkTest extends AbstractAttackerTest {
      */
     @Test @Override
     public void testInteractWithCastle() {
-        for (Infantry victimInfantry : victimInfantryList) {
-            monk.interactWith(victimInfantry);
+        for (Castle victimCastle : victimCastleList) {
+            monk.interactWith(victimCastle);
         }
-        assertEquals(100, victimInfantry1.getCurrentHP(), epsilon);
-        assertEquals(200, victimInfantry2.getCurrentHP(), epsilon);
-        assertEquals(50, victimInfantry3.getCurrentHP(), epsilon);
-        assertEquals(100, victimInfantryNoAP.getCurrentHP(), epsilon);
-        assertEquals(0, victimInfantryDead.getCurrentHP(), epsilon);
+        assertEquals(100, victimCastle1.getCurrentHP(), epsilon);
+        assertEquals(200, victimCastle2.getCurrentHP(), epsilon);
+        assertEquals(50, victimCastle3.getCurrentHP(), epsilon);
+        assertEquals(100, victimCastleNoAP.getCurrentHP(), epsilon);
+        assertEquals(0, victimCastleDead.getCurrentHP(), epsilon);
     }
 
     /**

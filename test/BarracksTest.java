@@ -49,8 +49,8 @@ public class BarracksTest extends AbstractAttackableTest {
      */
     @Test @Override
     public void testGetCurrentHP() {
-        assertEquals(100, barracks1.getCurrentHP(), 0.0);
-        assertEquals(200, barracks2.getCurrentHP(), 0.0);
+        assertEquals(100, barracks1.getCurrentHP(), epsilon);
+        assertEquals(200, barracks2.getCurrentHP(), epsilon);
     }
 
     /**
@@ -59,9 +59,9 @@ public class BarracksTest extends AbstractAttackableTest {
     @Test @Override
     public void testSetCurrentHP() {
         barracks1.setCurrentHP(77);
-        assertEquals(77, barracks1.getCurrentHP(), 0.0);
+        assertEquals(77, barracks1.getCurrentHP(), epsilon);
         barracks1.setCurrentHP(20.3f);
-        assertEquals(20.3f, barracks1.getCurrentHP(), 0.0);
+        assertEquals(20.3f, barracks1.getCurrentHP(), epsilon);
     }
 
     /**
@@ -69,16 +69,16 @@ public class BarracksTest extends AbstractAttackableTest {
      */
     @Test @Override
     public void testGetMaxHP() {
-        assertEquals(100, barracks1.getMaxHP(), 0.0);
-        assertEquals(200, barracks2.getMaxHP(), 0.0);
+        assertEquals(100, barracks1.getMaxHP(), epsilon);
+        assertEquals(200, barracks2.getMaxHP(), epsilon);
     }
 
     @Test @Override
     public void testSetMaxHP() {
         barracks1.setMaxHP(40);
-        assertEquals(40, barracks1.getMaxHP(), 0.0);
+        assertEquals(40, barracks1.getMaxHP(), epsilon);
         barracks1.setMaxHP(945.76f);
-        assertEquals(945.76f, barracks1.getMaxHP(), 0.0);
+        assertEquals(945.76f, barracks1.getMaxHP(), epsilon);
     }
 
     /**
@@ -86,8 +86,8 @@ public class BarracksTest extends AbstractAttackableTest {
      */
     @Test @Override
     public void testGetAttackPoints() {
-        assertEquals(barracks1.getAttackPoints(), 0, 0.0);
-        assertEquals(barracks2.getAttackPoints(), 0, 0.0);
+        assertEquals(barracks1.getAttackPoints(), 0, epsilon);
+        assertEquals(barracks2.getAttackPoints(), 0, epsilon);
     }
 
     /**
@@ -96,9 +96,9 @@ public class BarracksTest extends AbstractAttackableTest {
     @Test @Override
     public void testSetAttackPoints() {
         barracks1.setAttackPoints(45);
-        assertEquals(45, barracks1.getAttackPoints(), 0.0);
+        assertEquals(45, barracks1.getAttackPoints(), epsilon);
         barracks1.setAttackPoints(64.8f);
-        assertEquals(64.8f, barracks1.getAttackPoints(), 0.0);
+        assertEquals(64.8f, barracks1.getAttackPoints(), epsilon);
     }
 
     /**
@@ -196,6 +196,7 @@ public class BarracksTest extends AbstractAttackableTest {
         barracks1.handledByVillager(attackerVillagerDead);
         assertEquals(100, barracks1.getCurrentHP(), epsilon);
         barracks1.setCurrentHP(1);
+        barracks1.handledByVillager(attackerVillager);
         assertEquals(71, barracks1.getCurrentHP(), epsilon);
 
     }
