@@ -4,6 +4,7 @@ import ageofempires.IAttackable;
 
 /**
  * Cavalry unit class
+ *
  * @author Jose Miguel Cordero
  */
 public class Cavalry extends AbstractUnit {

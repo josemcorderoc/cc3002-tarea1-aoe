@@ -8,7 +8,7 @@ import ageofempires.IAttacker;
  *
  * @author Jose Miguel Cordero
  */
-public abstract class AbstractUnit extends AbstractEntity implements IAttacker {
+abstract class AbstractUnit extends AbstractEntity implements IAttacker {
 
     AbstractUnit(float hp, float ap) {
         super(hp, ap);
